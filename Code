@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Apply for job by Colorlib</title>
+
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all">
+	
+	<script type="text/javascript">
+
+function uniqueTownsLRN(frm){
+var towns = frm.elements['inputText'].value;
+var arrTowns = towns.split(/\s+/);
+var arrNewTowns = [];
+var seenTowns = {};
+for(var i=0;i<arrTowns.length;i++) {
+if (!seenTowns[arrTowns[i]]) {
+seenTowns[arrTowns[i]]=true;
+arrNewTowns.push(arrTowns[i]);
+}
+}
+frm.elements['outputText'].value = arrNewTowns.join(" ");
+}
+
+function uniqueTownsDJS(frm){
+var towns = frm.elements['inputText'].value;
+var arrTowns = towns.split(/\s+/).sort(), ans = "", Had = "";
+for(var i=0;i < arrTowns.length;i++)
+if( Had != (Had=arrTowns[i]) )ans += Had + " ";
+frm.elements['outputText'].value = ans;
+}
+
+function uniqueTownsRC(frm){
+var towns = frm.elements['inputText'].value;
+var st = '', seenTowns = {}, arrTowns = towns.split(/\s+/);
+for(var c = arrTowns.length;c--;){
+seenTowns[arrTowns[c]] = true;
+}
+for(var prop in seenTowns){
+st += prop+' ';
+}
+frm.elements['outputText'].value = st;
+}
+
+
+String.prototype.capitalize = function() {
+  return this.replace(/(^|\s)([a-z])/g, function(m, p1, p2) {
+    return p1 + p2.toUpperCase();
+  });
+};
+
+</script>
+
+	
+</head>
+
+<body>
+    <div class="page-wrapper bg-dark p-t-100 p-b-50">
+        <div class="wrapper wrapper--w900">
+            <div class="card card-6">
+                <div class="card-heading">
+                    <!--<h2 class="title">Apply for job</h2>-->
+                </div>
+                <div class="card-body">
+                    
+          
+                        <div class="form-row">
+                           
+                            <div class="value">
+                                <div class="input-group">
+                                    <textarea class="textarea--style-6" id="inputField"placeholder="Enter text for Word Count"></textarea>
+                                </div>
+                            </div>
+                        </div>
+						<div class="card-footer">
+						
+         <button class="btn btn--radius-2 btn--blue-2" name="Convert" onclick="countWords()">Word Counts</button> 
+					
+					
+                </div>
+						<div class="form-row">
+                            
+                            <div class="value">
+                                <div class="input-group">
+                                    <textarea class="textarea--style-6" id="show" placeholder=""></textarea>
+                                </div>
+                            </div>
+                        </div>
+                      <form name="testForm" action="" method="get"
+onsubmit="return subTests()">  
+                     <div class="form-row">
+                           
+                            <div class="value">
+                                <div class="input-group">
+                                    <textarea class="textarea--style-6" name="inputText" placeholder="Enter text for Unique Words Test"></textarea>
+                                </div>
+                            </div>
+                        </div>
+						
+						<div class="card-footer">
+					<button class="btn btn--radius-2 btn--blue-2" onclick="uniqueTownsLRN(this.form);">Unique Words</button> 
+					</div>
+					<div class="form-row">
+                            
+                            <div class="value">
+                                <div class="input-group">
+                                    <textarea class="textarea--style-6" name="outputText" placeholder=""></textarea>
+                                </div>
+                            </div>
+                        </div>
+					</form>
+					
+					
+					<form name="form1" method="post">
+					 <div class="form-row">
+                           
+                            <div class="value">
+                                <div class="input-group">
+                                    <textarea class="textarea--style-6" name="instring"placeholder="Enter text for Test Title input Text"></textarea>
+                                </div>
+                            </div>
+                        </div>
+						<div class="card-footer">
+						
+         <button class="btn btn--radius-2 btn--blue-2" name="Capitalize" onclick="form1.outstring.value=form1.instring.value.capitalize();">Title input Text</button> 
+					
+					
+                </div>
+						<div class="form-row">
+                            
+                            <div class="value">
+                                <div class="input-group">
+                                    <textarea class="textarea--style-6"  name="outstring" placeholder=""></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+						
+					
+					
+					
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+
+    <!-- Main JS-->
+    <script src="js/global.js"></script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+
+    <script> 
+        function countWords() { 
+  
+            // Get the input text value 
+            var text = document 
+                .getElementById("inputField").value; 
+  
+            // Initialize the word counter 
+            var numWords = 0; 
+  
+            // Loop through the text 
+            // and count spaces in it  
+            for (var i = 0; i < text.length; i++) { 
+                var currentCharacter = text[i]; 
+  
+                // Check if the character is a space 
+                if (currentCharacter == " ") { 
+                    numWords += 1; 
+                } 
+            } 
+  
+            // Add 1 to make the count equal to 
+            // the number of words  
+            // (count of words = count of spaces + 1) 
+            numWords += 1; 
+  
+            // Display it as output 
+            document.getElementById("show") 
+                .innerHTML = numWords; 
+				
+				
+				
+        } 
+    </script> 
+
+</html>
+<!-- end document-->
